@@ -1,0 +1,6 @@
+requests
+pandas
+numpy
+django
+psycopg2
+sqlalchemy
