@@ -34,9 +34,11 @@ Ej 4: `http://127.0.0.1:8000/estadisticas-generales/`
 
 ## Funcionalidades
 
+
 ### 1. Carga de datos
 
 Un usuario con la aplicación instalada debe poder ejecutar un comando indicando un símbolo compuesto de una criptomoneda y una moneda real (e.g. "BTC-USD") y el sistema debe cargar las órdenes L3 en su base de datos.
+
 
 ### 2. Estadísticas de compras
 
@@ -50,9 +52,11 @@ Como usuario con la aplicación ejecutada, debo poder visitar una URL y obtener 
 
 -El total de monedas en órdenes.
 
+
 ### 3. Estadísticas de ventas
 
 Como usuario con la aplicación ejecutada, debo poder visitar una URL y obtener las mismas estadísticas que antes pero respecto a las órdenes de venta (asks) de un símbolo.
+
 
 ### 4. Estadísticas generales
 
