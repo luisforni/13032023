@@ -12,13 +12,13 @@ pip install -r requirements.txt
 cd prueba_tecnica
 ```
 
+Editar `DATABASES` en `prueba_tecnica/settings.py`.
+
 ej. 1 
 ```
 python main.py BTC-USD
 ```
-
 ej 2, 3 y 4
-Editar `DATABASES` en `prueba_tecnica/settings.py`.
 
 ```
 python manage.py makemigrations
