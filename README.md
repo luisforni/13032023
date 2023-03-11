@@ -41,9 +41,13 @@ Un usuario con la aplicación instalada debe poder ejecutar un comando indicando
 ### 2. Estadísticas de compras
 
 Como usuario con la aplicación ejecutada, debo poder visitar una URL y obtener las siguientes estadísticas de las órdenes de compra (bids) de un símbolo:
+
 -El valor medio de las órdenes, donde el valor es la cantidad de la orden multiplicado por su precio.
+
 -La orden de compra con mayor valor.
+
 -La orden de compra con menor valor.
+
 -El total de monedas en órdenes.
 
 ### 3. Estadísticas de ventas
@@ -53,11 +57,17 @@ Como usuario con la aplicación ejecutada, debo poder visitar una URL y obtener 
 ### 4. Estadísticas generales
 
 Como usuario con la aplicación ejecutada, debo poder visitar una URL y obtener las siguientes estadísticas globales de todos los símbolos:
+
 -Número de órdenes de compra.
+
 -Número de órdenes de venta.
+
 -Valor total de las órdenes de compra.
+
 -Valor total de las órdenes de venta.
+
 -El total de monedas de las órdenes de compra.
+
 -El total de monedas de las órdenes de venta.
 
 
