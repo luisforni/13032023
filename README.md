@@ -26,6 +26,10 @@ python manage.py migrate
 python manage.py runserver
 ```
 
+Ej 2: `http://127.0.0.1:8000/estadisticas-compras/?symbol=BTC-USD`
+Ej 3: `http://127.0.0.1:8000/estadisticas-ventas/?symbol=BTC-USD`
+Ej 4: `http://127.0.0.1:8000/estadisticas-generales/`
+
 ## Funcionalidades
 
 ### 1. Carga de datos
