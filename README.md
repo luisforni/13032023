@@ -1,4 +1,4 @@
-#Prueba técnica t2ó
+# Prueba técnica t2ó
 
 La tarea consiste en hacer una aplicación que lee datos de una API externa, los almacena y expone información sobre estos datos a través de una API REST.
 
@@ -26,13 +26,13 @@ python manage.py migrate
 python manage.py runserver
 ```
 
-##Funcionalidades
+## Funcionalidades
 
-###1. Carga de datos
+### 1. Carga de datos
 
 Un usuario con la aplicación instalada debe poder ejecutar un comando indicando un símbolo compuesto de una criptomoneda y una moneda real (e.g. "BTC-USD") y el sistema debe cargar las órdenes L3 en su base de datos.
 
-###2. Estadísticas de compras
+### 2. Estadísticas de compras
 
 Como usuario con la aplicación ejecutada, debo poder visitar una URL y obtener las siguientes estadísticas de las órdenes de compra (bids) de un símbolo:
 -El valor medio de las órdenes, donde el valor es la cantidad de la orden multiplicado por su precio.
@@ -40,11 +40,11 @@ Como usuario con la aplicación ejecutada, debo poder visitar una URL y obtener 
 -La orden de compra con menor valor.
 -El total de monedas en órdenes.
 
-#3. Estadísticas de ventas
+### 3. Estadísticas de ventas
 
 Como usuario con la aplicación ejecutada, debo poder visitar una URL y obtener las mismas estadísticas que antes pero respecto a las órdenes de venta (asks) de un símbolo.
 
-#4. Estadísticas generales
+### 4. Estadísticas generales
 
 Como usuario con la aplicación ejecutada, debo poder visitar una URL y obtener las siguientes estadísticas globales de todos los símbolos:
 -Número de órdenes de compra.
