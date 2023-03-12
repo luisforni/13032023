@@ -30,7 +30,7 @@ def estadisticasCompras(request):
     response = requests.get(f'https://api.blockchain.com/v3/exchange/l3/{symbol}')
     datos_json = response.json()
 
-    # órdenes de compra
+    # DataFrame órdenes de compra
     df_bids = pd.DataFrame(datos_json['bids']).fillna(0)
 
     # El valor medio de las órdenes, donde el valor es la cantidad de la orden multiplicado por su precio.
@@ -83,7 +83,7 @@ def estadisticasVentas(request):
     response = requests.get(f'https://api.blockchain.com/v3/exchange/l3/{symbol}')
     datos_json = response.json()
 
-    # órdenes de venta
+    # DataFrame órdenes de venta
     df_asks = pd.DataFrame(datos_json['asks']).fillna(0)
     
     # El valor medio de las órdenes, donde el valor es la cantidad de la orden multiplicado por su precio.
@@ -144,7 +144,7 @@ def estadisticasGenerales(request):
         response = requests.get(f'https://api.blockchain.com/v3/exchange/l3/{symbol}')
         datos_json = response.json()
 
-        # órdenes de compra
+        # DataFrame órdenes de compra y venta
         df_bids = pd.DataFrame(datos_json['bids']).fillna(0)
         df_asks = pd.DataFrame(datos_json['asks']).fillna(0)
 
