@@ -19,17 +19,23 @@ def home(request):
     <p>Ej 4: http://127.0.0.1:8000/estadisticas-generales/</p>
     """)
 
+    """
+    precio (px)
+    cantidad (qty)
+    número de órdenes (num)
+    """
+
 def estadisticasCompras(request):
     symbol = request.GET.get('symbol')
     response = requests.get(f'https://api.blockchain.com/v3/exchange/l3/{symbol}')
     datos_json = response.json()
 
     # órdenes de compra
-    df_bids = pd.DataFrame(datos_json['bids'])
+    df_bids = pd.DataFrame(datos_json['bids']).fillna(0)
 
-    # precio (px), cantidad (qty) y número de pedidos (num).
     # El valor medio de las órdenes, donde el valor es la cantidad de la orden multiplicado por su precio.
-    average_value = df_bids['num'].mean()
+    value_bids = df_bids['qty'] * df_bids['px']
+    average_value = value_bids.mean()
 
     # greater_value. La orden de compra con mayor valor
     gv_px = df_bids['px'].max()
@@ -68,7 +74,9 @@ def estadisticasCompras(request):
     bids['total_qty'] = total_qty
     bids['total_px'] = total_px
 
-    return JsonResponse(bids)
+    datos = {'bids': bids}
+
+    return JsonResponse(datos)
 
 def estadisticasVentas(request):
     symbol = request.GET.get('symbol')
@@ -76,11 +84,11 @@ def estadisticasVentas(request):
     datos_json = response.json()
 
     # órdenes de venta
-    df_asks = pd.DataFrame(datos_json['asks'])
+    df_asks = pd.DataFrame(datos_json['asks']).fillna(0)
     
-    # precio (px), cantidad (qty) y número de pedidos (num).
     # El valor medio de las órdenes, donde el valor es la cantidad de la orden multiplicado por su precio.
-    average_value = df_asks['num'].mean()
+    value_asks = df_asks['qty'] * df_asks['px']
+    average_value = value_asks.mean() 
 
     # greater_value. La orden de venta con mayor valor
     gv_px = df_asks['px'].max()
@@ -119,7 +127,9 @@ def estadisticasVentas(request):
     asks['total_qty'] = total_qty
     asks['total_px'] = total_px
 
-    return JsonResponse(asks)
+    datos = {'asks': asks}
+
+    return JsonResponse(datos)
 
 def estadisticasGenerales(request):
     response_symbols = requests.get(f'https://api.blockchain.com/v3/exchange/symbols/')
@@ -131,30 +141,35 @@ def estadisticasGenerales(request):
     datos = []
     
     for symbol in df_symbols:
-        response = requests.get(f'https://api.blockchain.com/v3/exchange/l3/BTC-USD')
+        response = requests.get(f'https://api.blockchain.com/v3/exchange/l3/{symbol}')
         datos_json = response.json()
 
         # órdenes de compra
         df_bids = pd.DataFrame(datos_json['bids']).fillna(0)
         df_asks = pd.DataFrame(datos_json['asks']).fillna(0)
 
-        bids_count = len(df_bids)
-        bids_qty = df_bids['qty'].sum()
-        bids_value = df_asks['px'].sum()     # NO COMPRENDO BIEN CUAL ES EL DATO QUE HAY QUE CALCULAR, MONEDA ES SIMBOLO?
+        try:
+            bids_count = len(df_bids)
+            bids_qty = df_bids['qty'].sum()
+            bids_value = df_asks['px'].sum()     # NO COMPRENDO BIEN CUAL ES EL DATO QUE HAY QUE CALCULAR, MONEDA ES SIMBOLO?
 
-        asks_count = len(df_asks)
-        asks_qty = df_asks['qty'].sum()
-        asks_value = df_asks['px'].sum()    # NO COMPRENDO BIEN CUAL ES EL DATO QUE HAY QUE CALCULAR, MONEDA ES SIMBOLO?
+            asks_count = len(df_asks)
+            asks_qty = df_asks['qty'].sum()
+            asks_value = df_asks['px'].sum()    # NO COMPRENDO BIEN CUAL ES EL DATO QUE HAY QUE CALCULAR, MONEDA ES SIMBOLO?
 
-        bids = {}
-        bids['count'] = str(bids_count)
-        bids['qty'] = str(bids_qty)
-        bids['value'] = str(bids_value)
+            bids = {}
+            bids['count'] = str(bids_count)
+            bids['qty'] = str(bids_qty)
+            bids['value'] = str(bids_value)
 
-        asks = {}
-        asks['count'] = str(asks_count)
-        asks['qty'] = str(asks_qty)
-        asks['value'] = str(asks_value)
+            asks = {}
+            asks['count'] = str(asks_count)
+            asks['qty'] = str(asks_qty)
+            asks['value'] = str(asks_value)
+
+        except:
+            bids = []
+            asks = []
 
         simbolos = {}
         simbolos['bids'] = bids
