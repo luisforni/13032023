@@ -153,14 +153,18 @@ def estadisticasGenerales(request):
             bids_qty = df_bids['qty'].sum()
             bids_value = df_asks['px'].sum()     # MONEDA ES SIMBOLO?
 
-            asks_count = len(df_asks)
-            asks_qty = df_asks['qty'].sum()
-            asks_value = df_asks['px'].sum()    # MONEDA ES SIMBOLO?
-
             bids = {}
             bids['count'] = str(bids_count)
             bids['qty'] = str(bids_qty)
             bids['value'] = str(bids_value)
+
+        except:
+            bids = []
+
+        try:
+            asks_count = len(df_asks)
+            asks_qty = df_asks['qty'].sum()
+            asks_value = df_asks['px'].sum()    # MONEDA ES SIMBOLO?
 
             asks = {}
             asks['count'] = str(asks_count)
@@ -168,7 +172,6 @@ def estadisticasGenerales(request):
             asks['value'] = str(asks_value)
 
         except:
-            bids = []
             asks = []
 
         simbolos = {}
