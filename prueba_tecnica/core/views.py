@@ -179,4 +179,5 @@ def estadisticasGenerales(request):
         datos.append(monedas)
 
     data = json.dumps(datos)
-    return HttpResponse(data)
+    symbol = {'symbol': data}
+    return JsonResponse(symbol)
