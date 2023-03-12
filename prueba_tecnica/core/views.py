@@ -19,11 +19,11 @@ def home(request):
     <p>Ej 4: http://127.0.0.1:8000/estadisticas-generales/</p>
     """)
 
-    """
-    precio (px)
-    cantidad (qty)
-    número de órdenes (num)
-    """
+"""
+precio (px)
+cantidad (qty)
+número de órdenes (num)
+"""
 
 def estadisticasCompras(request):
     symbol = request.GET.get('symbol')
