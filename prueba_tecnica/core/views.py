@@ -6,18 +6,7 @@ import json
 
 # Create your views here.
 def home(request):
-    return HttpResponse("""
-    <h1>Ingrese en la URL:</h1>
-    <br>
-    <h2>/estadisticas-compras/?symbol={symbol}</h2>
-    <h2>/estadisticas-ventas/?symbol={symbol}</h2>
-    <h2>/estadisticas-generales/</h2>
-    <br>
-    <p>Corresponde a cada ejercicio con el parametro que indica el simbolo correspondiente</p>
-    <p>Ej 2: http://127.0.0.1:8000/estadisticas-compras/?symbol=BTC-USD</p>
-    <p>Ej 3: http://127.0.0.1:8000/estadisticas-ventas/?symbol=BTC-USD</p>
-    <p>Ej 4: http://127.0.0.1:8000/estadisticas-generales/</p>
-    """)
+    return render(request, 'core/home.html')
 
 """
 precio (px)

@@ -1,0 +1,25 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="container-fluid m-5">
+        <h1>Ingrese en la URL:</h1>
+    </div>
+    <div class="container-fluid m-5">
+        <h2>/estadisticas-compras/?symbol={symbol}</h2>
+        <h2>/estadisticas-ventas/?symbol={symbol}</h2>
+        <h2>/estadisticas-generales/</h2>
+    </div>
+    <div class="container-fluid m-5">
+        <p>Ej.1: Ejecutar por consola <span class="badge text-bg-secondary">python main.py BTC-USD</span> con un parámetro que corresponde al símbolo.</p>
+        <p>Ej.2: <span class="badge text-bg-secondary">http://127.0.0.1:8000/estadisticas-compras/?symbol=BTC-USD</span></p>
+        <p>Ej.3: <span class="badge text-bg-secondary">http://127.0.0.1:8000/estadisticas-ventas/?symbol=BTC-USD</span></p>
+        <p>La URL indica cada ejercicio con el parámetro que indica el símbolo correspondiente.</p>
+        <p>Ej.4: <span class="badge text-bg-secondary">http://127.0.0.1:8000/estadisticas-generales/</span></p>
+    </div>
+    <br>
+    
+</div>
+
+{% endblock %}
