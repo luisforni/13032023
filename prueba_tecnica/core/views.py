@@ -151,11 +151,11 @@ def estadisticasGenerales(request):
         try:
             bids_count = len(df_bids)
             bids_qty = df_bids['qty'].sum()
-            bids_value = df_asks['px'].sum()     # NO COMPRENDO BIEN CUAL ES EL DATO QUE HAY QUE CALCULAR, MONEDA ES SIMBOLO?
+            bids_value = df_asks['px'].sum()     # MONEDA ES SIMBOLO?
 
             asks_count = len(df_asks)
             asks_qty = df_asks['qty'].sum()
-            asks_value = df_asks['px'].sum()    # NO COMPRENDO BIEN CUAL ES EL DATO QUE HAY QUE CALCULAR, MONEDA ES SIMBOLO?
+            asks_value = df_asks['px'].sum()    # MONEDA ES SIMBOLO?
 
             bids = {}
             bids['count'] = str(bids_count)
